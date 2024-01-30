@@ -1,11 +1,13 @@
 ﻿using Finance.Domain.Entity.Entities.Systems.SystemExpenses;
+using Finance.Domain.Entity.Entities.Systems.SystemIncomes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Finance.Domain.Entity.Entities.Users.Systems.Expenses
+namespace Finance.Domain.Entity.Entities.Users.Systems
 {
     [Table("UsuarioSistema")]
-    public class UserExpense
+    public class UserSystem
+
     {
         public int Id { get; set; }
 
@@ -28,7 +30,13 @@ namespace Finance.Domain.Entity.Entities.Users.Systems.Expenses
         //Foreign Key
         [ForeignKey("SystemExpense")]
         [Column(Order = 1)]
-        public int SystemId { get; set; }
+        public int SystemExpenseId { get; set; }
         public virtual SystemExpense SystemExpense { get; set; }
+
+        //Foreign Key
+        [ForeignKey("SystemIncome")]
+        [Column(Order = 1)]
+        public int SystemIncomeId { get; set; }
+        public virtual SystemIncome SystemIncome { get; set; }
     }
 }
