@@ -2,7 +2,7 @@
 
 namespace Finance.Domain.Interfaces.Repositories.Systems.SystemIncomes
 {
-    internal interface IRepositorySystemIncome : IRepositoryBase<SystemIncome>
+    public interface IRepositorySystemIncome : IRepositoryBase<SystemIncome>
     {
         Task<IList<SystemIncome>> SystemUserList(string userEmail);
     }

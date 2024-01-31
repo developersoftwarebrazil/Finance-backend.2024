@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Finance.Domain.Entity\Finance.Domain.Entity.csproj" />
   </ItemGroup>
 
