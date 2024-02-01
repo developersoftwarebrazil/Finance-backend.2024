@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Finance.Domain.Entity.Entities.Systems.SystemIncomes
 {
+    [Table("SistemaInvestimento")]
     public class SystemIncome : Base
     {
         [Display(Name = "DIAFECHAMENTOMENSAL")]

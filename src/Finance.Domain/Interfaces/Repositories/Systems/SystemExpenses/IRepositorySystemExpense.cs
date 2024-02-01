@@ -4,6 +4,6 @@ namespace Finance.Domain.Interfaces.Repositories.Systems.SystemExpenses
 {
     public interface IRepositorySystemExpense : IRepositoryBase<SystemExpense>
     {
-        Task<IList<SystemExpense>> SystemUserList(string userEmail);
+        Task<IList<SystemExpense>> SystemExpenseUserList(string userEmail);
     }
 }

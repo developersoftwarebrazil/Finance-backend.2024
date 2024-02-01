@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Finance.Domain.Entity.Entities.Categories
 {
+    [Table("Categoria")]
     public class Category : Base
     {
 
@@ -14,7 +15,7 @@ namespace Finance.Domain.Entity.Entities.Categories
 
 
         [ForeignKey("SystemIncome")]
-        [Column(Order = 1)]
+        [Column(Order = 0)]
         public int SystemIncomeId { get; set; }
         public virtual SystemIncome SystemIncome { get; set; }
 

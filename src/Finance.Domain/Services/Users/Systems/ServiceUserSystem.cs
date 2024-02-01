@@ -1,5 +1,5 @@
 ﻿using Finance.Domain.Entity.Entities.Users.Systems;
-using Finance.Domain.Interfaces.Repositories.Users;
+using Finance.Domain.Interfaces.Repositories.Users.Systems;
 using Finance.Domain.Interfaces.Services.Users.Systems;
 
 namespace Finance.Domain.Services.Users.Systems
@@ -15,7 +15,7 @@ namespace Finance.Domain.Services.Users.Systems
 
         public async Task RegisterUserSystem(UserSystem userSystem)
         {
-           await repositoryUserSystem.Add(userSystem)
+            await repositoryUserSystem.Add(userSystem);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Finance.Domain.Entity.Entities.Users.Systems
 
         //Foreign Key
         [ForeignKey("SystemIncome")]
-        [Column(Order = 1)]
+        [Column(Order = 0)]
         public int SystemIncomeId { get; set; }
         public virtual SystemIncome SystemIncome { get; set; }
     }

@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3.2-Infra.Crosscuttings",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.1-Domain.Core", "2.2.1-Domain.Core", "{F012BE32-971B-42C7-860C-1D28A9AE0864}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.2-Domain.Entity", "2.2.2-Domain.Entity", "{9EE659AF-F6DB-4471-B82C-94FF1739D53A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.0-Domain.Entity", "2.2.0-Domain.Entity", "{9EE659AF-F6DB-4471-B82C-94FF1739D53A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance.Infra.Data", "src\Finance.Infra.Data\Finance.Infra.Data.csproj", "{316F2406-534C-4BE1-B243-E97354A31ABF}"
 EndProject

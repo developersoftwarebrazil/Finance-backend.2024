@@ -60,9 +60,9 @@ namespace Finance.Domain.Services.Expenses
                 success = "OK",
                 payiedExpense = payiedExpense,
                 pendingExpense = pendingExpense,
-                previuusExpense = previuusExpense,
+                previusExpense = previuusExpense,
                 //income = income,
-            }; ''
+            };
         }
     }
 }

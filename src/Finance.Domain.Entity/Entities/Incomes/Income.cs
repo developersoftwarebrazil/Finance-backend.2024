@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Finance.Domain.Entity.Entities.Incomes
 {
+    [Table("Investimento")]
     public class Income : Base
     {
 
@@ -36,6 +37,7 @@ namespace Finance.Domain.Entity.Entities.Incomes
         [Display(Name = "TIPOTRANSACAO")]
         [Column("TipoTransacao")]
         public TransactionTypeEnum TransactionTypes { get; set; }
+
 
         [ForeignKey("Category")]
         [Column(Order = 1)]

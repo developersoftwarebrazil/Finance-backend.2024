@@ -32,7 +32,7 @@ namespace Finance.Domain.Services.Systems.SystemIncomes
 
         public async Task UpdateSystemIncome(SystemIncome systemIncome)
         {
-            var isValidate = systemIncome.PropertyStringValidations(systemIncome.Name, "Name")
+            var isValidate = systemIncome.PropertyStringValidations(systemIncome.Name, "Name");
             if (isValidate)
             {
                 systemIncome.DayMonthlyBookClose -= 1;

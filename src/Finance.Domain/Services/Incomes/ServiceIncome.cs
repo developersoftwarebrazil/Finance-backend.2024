@@ -53,3 +53,4 @@ namespace Finance.Domain.Services.Incomes
             };
         }
     }
+}
