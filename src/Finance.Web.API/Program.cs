@@ -16,6 +16,10 @@ using Finance.Domain.Interfaces.Services.Users.Systems;
 using Finance.Domain.Services;
 using Finance.Domain.Services.Categories;
 using Finance.Domain.Services.Expenses;
+using Finance.Domain.Services.Incomes;
+using Finance.Domain.Services.Systems.SystemExpenses;
+using Finance.Domain.Services.Systems.SystemIncomes;
+using Finance.Domain.Services.Users.Systems;
 using Finance.Infra.Data.Date.Contexts;
 using Finance.Infra.Data.Repositories;
 using Finance.Infra.Data.Repositories.Categories;
@@ -63,10 +67,10 @@ builder.Services.AddSingleton<IRepositoryUserSystem, RepositoryUserSystem>();
 builder.Services.AddSingleton(typeof(IServiceBase<>), typeof(ServiceBase<>));
 builder.Services.AddSingleton<IServiceCategory, ServiceCategory>();
 builder.Services.AddSingleton<IServiceExpense, ServiceExpense>();
-builder.Services.AddSingleton<IServiceIncome, IServiceIncome>();
-builder.Services.AddSingleton<IServiceSystemExpense, IServiceSystemExpense>();
-builder.Services.AddSingleton<IServiceSystemIncome, IServiceSystemIncome>();
-builder.Services.AddSingleton<IServiceUserSystem, IServiceUserSystem>();
+builder.Services.AddSingleton<IServiceIncome, ServiceIncome>();
+builder.Services.AddSingleton<IServiceSystemExpense, ServiceSystemExpense>();
+builder.Services.AddSingleton<IServiceSystemIncome, ServiceSystemIncome>();
+builder.Services.AddSingleton<IServiceUserSystem, ServiceUserSystem>();
 
 
 var app = builder.Build();
