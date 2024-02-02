@@ -25,7 +25,6 @@ using Finance.Infra.Data.Repositories.System.SystemExpenses;
 using Finance.Infra.Data.Repositories.System.SystemIncomes;
 using Finance.Infra.Data.Repositories.Users.Systems;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +51,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
 // INTERFACE E REPOSITORIO
 
-builder.Services.AddSingleton(typeof(IRepositoryBase<>),typeof(RepositoryBase<>));
+builder.Services.AddSingleton(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddSingleton<IRepositoryCategory, RepositoryCategory>();
 builder.Services.AddSingleton<IRepositoryExpense, RepositoryExpense>();
 builder.Services.AddSingleton<IRepositoryIncome, RepositoryIncome>();
