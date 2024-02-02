@@ -5,6 +5,7 @@ using System.Security.Claims;
 namespace Finance.Web.API.Tokens
 {
     public class TokenJWTBuilder
+  
     {
         private SecurityKey securityKey = null;
         private string subject = "";
@@ -72,6 +73,7 @@ namespace Finance.Web.API.Tokens
                 throw new ArgumentNullException("Audience");
         }
 
+
         public TokenJWT Builder()
         {
             EnsureArguments();
@@ -87,6 +89,8 @@ namespace Finance.Web.API.Tokens
                 audience: this.audience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
+
+
                 signingCredentials: new SigningCredentials(
                                                    this.securityKey,
                                                    SecurityAlgorithms.HmacSha256)

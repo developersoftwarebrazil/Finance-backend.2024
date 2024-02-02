@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Finance.Infra.Data.Migrations
 {
     [DbContext(typeof(FinanceDbContext))]
-    [Migration("20240201011857_InitialCreate")]
+    [Migration("20240202170853_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -235,7 +235,7 @@ namespace Finance.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SistemaInvestiemnto");
+                    b.ToTable("SistemaInvestimento");
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Identity.ApplicationUser", b =>

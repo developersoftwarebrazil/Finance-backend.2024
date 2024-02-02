@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -70,7 +71,7 @@ namespace Finance.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SistemaInvestiemnto",
+                name: "SistemaInvestimento",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -82,7 +83,7 @@ namespace Finance.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SistemaInvestiemnto", x => x.Id);
+                    table.PrimaryKey("PK_SistemaInvestimento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,9 +212,9 @@ namespace Finance.Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Categoria_SistemaInvestiemnto_SystemIncomeId",
+                        name: "FK_Categoria_SistemaInvestimento_SystemIncomeId",
                         column: x => x.SystemIncomeId,
-                        principalTable: "SistemaInvestiemnto",
+                        principalTable: "SistemaInvestimento",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -241,9 +242,9 @@ namespace Finance.Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UsuarioSistema_SistemaInvestiemnto_SystemIncomeId",
+                        name: "FK_UsuarioSistema_SistemaInvestimento_SystemIncomeId",
                         column: x => x.SystemIncomeId,
-                        principalTable: "SistemaInvestiemnto",
+                        principalTable: "SistemaInvestimento",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -415,7 +416,7 @@ namespace Finance.Infra.Data.Migrations
                 name: "SistemaDespesa");
 
             migrationBuilder.DropTable(
-                name: "SistemaInvestiemnto");
+                name: "SistemaInvestimento");
         }
     }
 }

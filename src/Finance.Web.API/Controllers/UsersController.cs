@@ -1,12 +1,10 @@
 ﻿using Finance.Domain.Entity.Entities.Users.Identity;
 using Finance.Web.API.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
-using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace Finance.Web.API.Controllers
 {
@@ -140,8 +138,9 @@ namespace Finance.Web.API.Controllers
             }
         }
 
-        [HttpGet("/ap/UserList")]
-        public IActionResult UserList() { 
+        [HttpGet("/api/UserList")]
+        public IActionResult UserList()
+        {
 
             var users = userManager.Users.ToList();
 

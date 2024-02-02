@@ -232,7 +232,7 @@ namespace Finance.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SistemaInvestiemnto");
+                    b.ToTable("SistemaInvestimento");
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Identity.ApplicationUser", b =>
