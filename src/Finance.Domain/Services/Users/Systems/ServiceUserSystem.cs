@@ -13,9 +13,15 @@ namespace Finance.Domain.Services.Users.Systems
             this.repositoryUserSystem = repositoryUserSystem;
         }
 
-        public async Task RegisterUserSystem(UserSystem userSystem)
+        public async Task RegisterUserOnSystemExpense(UserSystem userSystem)
         {
             await repositoryUserSystem.Add(userSystem);
         }
+
+        public async Task RegisterUserOnSystemIncome(UserSystem userSystem)
+        {
+            await repositoryUserSystem.Add(userSystem);
+        }
+
     }
 }

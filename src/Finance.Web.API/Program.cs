@@ -28,10 +28,10 @@ using Finance.Infra.Data.Repositories.Incomes;
 using Finance.Infra.Data.Repositories.System.SystemExpenses;
 using Finance.Infra.Data.Repositories.System.SystemIncomes;
 using Finance.Infra.Data.Repositories.Users.Systems;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Finance.Web.API.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -111,8 +111,8 @@ var app = builder.Build();
 //// Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
 app.UseHttpsRedirection();

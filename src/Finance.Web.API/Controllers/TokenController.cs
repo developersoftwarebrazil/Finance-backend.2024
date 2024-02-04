@@ -2,7 +2,6 @@
 using Finance.Web.API.Models;
 using Finance.Web.API.Tokens;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

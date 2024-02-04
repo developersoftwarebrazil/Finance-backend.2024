@@ -5,7 +5,7 @@ using System.Security.Claims;
 namespace Finance.Web.API.Tokens
 {
     public class TokenJWTBuilder
-  
+
     {
         private SecurityKey securityKey = null;
         private string subject = "";

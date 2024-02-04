@@ -31,6 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Crosscutting.Helper",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance.Domain.Entity", "src\Finance.Domain.Entity\Finance.Domain.Entity.csproj", "{07D9AC3D-8444-4016-8255-590F22C21DEA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.1-Project-data.diagrams", "0.1-Project-data.diagrams", "{2DC1929A-A431-4DE0-BF01-72EE641F7ECD}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\DOCUMENTS\PROJECT-DIAGRAMS\Finance-diagram-data-authentication.png = ..\..\DOCUMENTS\PROJECT-DIAGRAMS\Finance-diagram-data-authentication.png
+		..\..\DOCUMENTS\PROJECT-DIAGRAMS\Finance-diagram-data-full-systems.png = ..\..\DOCUMENTS\PROJECT-DIAGRAMS\Finance-diagram-data-full-systems.png
+		..\..\DOCUMENTS\PROJECT-DIAGRAMS\FInance-diagrams-data-system.png = ..\..\DOCUMENTS\PROJECT-DIAGRAMS\FInance-diagrams-data-system.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +82,7 @@ Global
 		{316F2406-534C-4BE1-B243-E97354A31ABF} = {13CC6F4B-1BBF-478D-937C-B9765CAF9CCD}
 		{4D898A93-1B77-4D71-829D-1BF7859D16A3} = {A0AA05F2-64B6-4812-9B18-44753AE4C017}
 		{07D9AC3D-8444-4016-8255-590F22C21DEA} = {9EE659AF-F6DB-4471-B82C-94FF1739D53A}
+		{2DC1929A-A431-4DE0-BF01-72EE641F7ECD} = {94F74823-7A4F-4315-B6E1-B776C31C7FF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ED565F93-C43D-4465-9C93-49D7E22BEAC7}

@@ -75,11 +75,7 @@ namespace Finance.Web.API.Controllers
         [HttpPut("/api/UpdateUser/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] Login login)
         {
-            if (
-                string.IsNullOrWhiteSpace(id) ||
-                string.IsNullOrWhiteSpace(login.Name) ||
-                string.IsNullOrWhiteSpace(login.Email) ||
-                string.IsNullOrWhiteSpace(login.Password))
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(login.Name) || string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Password))
             {
                 return BadRequest("Faltam alguns dados!");
             }
@@ -92,10 +88,10 @@ namespace Finance.Web.API.Controllers
             }
 
             // Atualiza os dados do usuário
-            //user.Email = login.email; // não pode alterar
-            //user.CPF = login.cpf;
+            user.Name = login.Name; // não pode alterar
 
-            //// Atualiza a senha se fornecida
+
+            // Atualiza a senha se fornecida
             //if (!string.IsNullOrWhiteSpace(login.senha))
             //{
             //    var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, login.senha);
