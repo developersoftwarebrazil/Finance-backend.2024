@@ -42,8 +42,7 @@ namespace Finance.Domain.Services.Incomes
         public async Task<object> LoadGraph(string userEmail)
         {
             var userIncome = await repositoryIncome.IncomeUserList(userEmail);
-
-            var 
+ 
             var income = userIncome.Where(i => i.TransactionTypes == TransactionTypeEnum.income).Sum(i => i.Value);
 
             return new
