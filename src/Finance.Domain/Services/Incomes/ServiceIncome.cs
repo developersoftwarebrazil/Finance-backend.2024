@@ -28,8 +28,7 @@ namespace Finance.Domain.Services.Incomes
                 await repositoryIncome.Add(income);
             }
         }
-
-        public async Task UpdateExpense(Income income)
+        public async Task UpdateIncome(Income income)
         {
             var date = DateTime.Now;
             income.RegistrationChangeDate = date;
@@ -40,10 +39,11 @@ namespace Finance.Domain.Services.Incomes
                 await repositoryIncome.Update(income);
             }
         }
-        public async Task<object> LoadGrafic(string userEmail)
+        public async Task<object> LoadGraph(string userEmail)
         {
             var userIncome = await repositoryIncome.IncomeUserList(userEmail);
 
+            var 
             var income = userIncome.Where(i => i.TransactionTypes == TransactionTypeEnum.income).Sum(i => i.Value);
 
             return new

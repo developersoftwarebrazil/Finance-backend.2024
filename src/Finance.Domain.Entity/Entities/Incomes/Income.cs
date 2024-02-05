@@ -31,7 +31,7 @@ namespace Finance.Domain.Entity.Entities.Incomes
 
         [Display(Name = "DATAINVESTIEMENTO")]
         [Column("DataInvestimento")]
-        public DateTime IncameDate { get; set; }
+        public DateTime IncomeDate { get; set; }
 
 
         [Display(Name = "TIPOTRANSACAO")]

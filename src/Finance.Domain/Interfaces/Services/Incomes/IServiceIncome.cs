@@ -5,7 +5,7 @@ namespace Finance.Domain.Interfaces.Services.Incomes
     public interface IServiceIncome : IServiceBase<Income>
     {
         Task AddIncome(Income income);
-        Task UpdateExpense(Income income);
-        Task<object> LoadGrafic(string userEmail);
+        Task UpdateIncome(Income income);
+        Task<object> LoadGraph(string userEmail);
     }
 }

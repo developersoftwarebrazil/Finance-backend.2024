@@ -30,7 +30,7 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpPut("/api/UpdateExpense")]
-        public async Task<object> UodateExpense(Expense expense)
+        public async Task<object> UpdateExpense(Expense expense)
         {
             await serviceExpense.UpdateExpense(expense);
             return expense;
