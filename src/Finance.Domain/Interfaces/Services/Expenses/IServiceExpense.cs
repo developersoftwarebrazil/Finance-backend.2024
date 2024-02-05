@@ -6,6 +6,6 @@ namespace Finance.Domain.Interfaces.Services.Expenses
     {
         Task AddExpense(Expense expense);
         Task UpdateExpense(Expense expense);
-        Task<object> LoadGrafic(string userEmail);
+        Task<object> LoadGraph(string userEmail);
     }
 }

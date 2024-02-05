@@ -58,7 +58,7 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpGet("/api/SystemUserIncomeList")]
-        public async Task<object> SystemUserIncomeList (string emailUser)
+        public async Task<object> SystemUserIncomeList(string emailUser)
         {
             return await repositorySystemIncome.SystemUserIncomeList(emailUser);
         }

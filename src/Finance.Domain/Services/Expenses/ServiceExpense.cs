@@ -45,7 +45,7 @@ namespace Finance.Domain.Services.Expenses
                 await repositoryExpense.Update(expense);
             }
         }
-        public async Task<object> LoadGrafic(string userEmail)
+        public async Task<object> LoadGraph(string userEmail)
         {
             var userExpense = await repositoryExpense.ExpenseUserList(userEmail);
             var previuusExpense = await repositoryExpense.UnPaidExpensesPreviusMonthUserList(userEmail);
