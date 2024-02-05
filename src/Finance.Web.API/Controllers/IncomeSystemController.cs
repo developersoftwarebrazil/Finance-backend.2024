@@ -1,51 +1,51 @@
-﻿using Finance.Domain.Entity.Entities.Systems.SystemExpenses;
-using Finance.Domain.Interfaces.Repositories.Systems.SystemExpenses;
-using Finance.Domain.Interfaces.Services.Systems.SystemExpenses;
+﻿using Finance.Domain.Entity.Entities.Systems.SystemIncomes;
+using Finance.Domain.Interfaces.Repositories.Systems.SystemIncomes;
+using Finance.Domain.Interfaces.Services.Systems.SystemIncomes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finance.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExpenseSystemController : ControllerBase
+    public class IncomeSystemController : ControllerBase
     {
-        private readonly IRepositorySystemExpense repositorySystemExpense;
-        private readonly IServiceSystemExpense serviceSystemExpense;
-        public ExpenseSystemController(
-            IRepositorySystemExpense repositorySystemExpense,
-            IServiceSystemExpense serviceSystemExpense
+        private readonly IRepositorySystemIncome repositorySystemIncome;
+        private readonly IServiceSystemIncome serviceSystemIncome;
+        public IncomeSystemController(
+            IRepositorySystemIncome repositorySystemIncome,
+            IServiceSystemIncome serviceSystemIncome
             )
         {
-            this.repositorySystemExpense = repositorySystemExpense;
-            this.serviceSystemExpense = serviceSystemExpense;
+            this.repositorySystemIncome = repositorySystemIncome;
+            this.serviceSystemIncome = serviceSystemIncome;
         }
 
 
         [Produces("application/json")]
-        [HttpPost("/api/AddSystemExpense")]
-        public async Task<object> AddSysteExpense(SystemExpense systemExpense)
+        [HttpPost("/api/AddSystemIncome")]
+        public async Task<object> AddSystemIncome(SystemIncome systemIncome)
         {
-            await serviceSystemExpense.AddSystemExpense(systemExpense);
-            return systemExpense;
+            await serviceSystemIncome.AddSystemIncome(systemIncome);
+            return systemIncome;
         }
 
         [Produces("application/json")]
-        [HttpPut("/api/UpdateSystemExpense")]
-        public async Task<object> UpdateSystemExpense(SystemExpense systemExpense)
+        [HttpPut("/api/UpdateSystemIncome")]
+        public async Task<object> UpdateSystemIncome(SystemIncome systemIncome)
         {
-            await serviceSystemExpense.UpdateSystemExpense(systemExpense);
-            return Task.FromResult(systemExpense);
+            await serviceSystemIncome.UpdateSystemIncome(systemIncome);
+            return Task.FromResult(systemIncome);
         }
 
         [Produces("application/json")]
-        [HttpDelete("/api/DeleteSystemExpense")]
-        public async Task<object> DeleteSystemExpense(int id)
+        [HttpDelete("/api/DeleteSystemIncome")]
+        public async Task<object> DeleteSystemIncome(int id)
         {
             try
             {
-                var systemExpense = await repositorySystemExpense.GetEntityById(id);
+                var systemIncome = await repositorySystemIncome.GetEntityById(id);
 
-                await repositorySystemExpense.Delete(systemExpense);
+                await repositorySystemIncome.Delete(systemIncome);
 
             }
             catch (Exception)
@@ -57,25 +57,17 @@ namespace Finance.Web.API.Controllers
         }
 
         [Produces("application/json")]
-        [HttpGet("/api/SystemExpenseUserList")]
-        public async Task<object> SystemExpenseUserList(string emailUser)
+        [HttpGet("/api/SystemUserIncomeList")]
+        public async Task<object> SystemUserIncomeList (string emailUser)
         {
-            return await repositorySystemExpense.SystemExpenseUserList(emailUser);
+            return await repositorySystemIncome.SystemUserIncomeList(emailUser);
         }
 
         [Produces("application/json")]
-        [HttpGet("/api/GetExpenseSystem")]
-        public async Task<object> GetSystemExpense(int id)
+        [HttpGet("/api/GetIncomeSystem")]
+        public async Task<object> GetSystemIncome(int id)
         {
-            return await repositorySystemExpense.GetEntityById(id);
+            return await repositorySystemIncome.GetEntityById(id);
         }
-
-        [Produces("application/json")]
-        [HttpPost("/api/GenerateSystemExpenseCopy")]
-        public async Task<object> GenerateSystemExpenseCopy()
-        {
-            return await repositorySystemExpense.GenerateSystemExpenseCopy();
-        }
-
     }
 }
