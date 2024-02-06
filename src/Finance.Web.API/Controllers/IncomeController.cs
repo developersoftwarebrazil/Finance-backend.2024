@@ -1,19 +1,14 @@
-﻿using Finance.Domain.Entity.Entities.Expenses;
-using Finance.Domain.Entity.Entities.Incomes;
-using Finance.Domain.Interfaces.Repositories.Expenses;
+﻿using Finance.Domain.Entity.Entities.Incomes;
 using Finance.Domain.Interfaces.Repositories.Incomes;
-using Finance.Domain.Interfaces.Services.Expenses;
 using Finance.Domain.Interfaces.Services.Incomes;
-using Finance.Domain.Services.Expenses;
-using Finance.Infra.Data.Repositories.Expenses;
-using Finance.Infra.Data.Repositories.Incomes;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finance.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class IncomeController : ControllerBase
     {
         private readonly IRepositoryIncome repositoryIncome;
@@ -24,8 +19,8 @@ namespace Finance.Web.API.Controllers
                 IServiceIncome serviceIncome
             )
         {
-           this.repositoryIncome = repositoryIncome;
-           this.serviceIncome = serviceIncome;
+            this.repositoryIncome = repositoryIncome;
+            this.serviceIncome = serviceIncome;
         }
 
         [Produces("application/json")]

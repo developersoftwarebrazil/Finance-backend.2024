@@ -1,13 +1,14 @@
 ﻿using Finance.Domain.Entity.Entities.Categories;
 using Finance.Domain.Interfaces.Repositories.Categories;
 using Finance.Domain.Interfaces.Services.Categories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finance.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
         private readonly IRepositoryCategory repositoryCategory;

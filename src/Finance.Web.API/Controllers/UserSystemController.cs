@@ -1,12 +1,14 @@
 ﻿using Finance.Domain.Entity.Entities.Users.Systems;
 using Finance.Domain.Interfaces.Repositories.Users.Systems;
 using Finance.Domain.Interfaces.Services.Users.Systems;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finance.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserSystemController : ControllerBase
     {
         private readonly IRepositoryUserSystem repositoryUserSystem;

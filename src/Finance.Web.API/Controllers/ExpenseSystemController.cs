@@ -1,12 +1,14 @@
 ﻿using Finance.Domain.Entity.Entities.Systems.SystemExpenses;
 using Finance.Domain.Interfaces.Repositories.Systems.SystemExpenses;
 using Finance.Domain.Interfaces.Services.Systems.SystemExpenses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finance.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ExpenseSystemController : ControllerBase
     {
         private readonly IRepositorySystemExpense repositorySystemExpense;

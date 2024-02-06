@@ -1,5 +1,4 @@
-﻿using Finance.Domain.Entity.Entities.Categories;
-using Finance.Domain.Entity.Enums.Systems;
+﻿using Finance.Domain.Entity.Enums.Systems;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -42,7 +41,7 @@ namespace Finance.Domain.Entity.Entities.Incomes
         [ForeignKey("Category")]
         [Column(Order = 1)]
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        //public virtual Category Category { get; set; }
     }
 }
 
