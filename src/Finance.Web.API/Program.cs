@@ -55,9 +55,9 @@ builder.Services.AddDbContext<FinanceDbContext>(options =>
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
   options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FinanceDbContext>();
 
-// DOMÍNIO PARA INFRAESTRUTURA
+// DOMï¿½NIO PARA INFRAESTRUTURA
 
-//// INTERFACE E REPOSITÓRIO
+//// INTERFACE E REPOSITï¿½RIO
 
 builder.Services.AddSingleton(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddSingleton<IRepositoryCategory, RepositoryCategory>();
@@ -67,8 +67,8 @@ builder.Services.AddSingleton<IRepositorySystemExpense, RepositorySystemExpense>
 builder.Services.AddSingleton<IRepositorySystemIncome, RepositorySystemIncome>();
 builder.Services.AddSingleton<IRepositoryUserSystem, RepositoryUserSystem>();
 
-//DOMÍNIO
-//// SERVIÇO DOMINIO
+//DOMï¿½NIO
+//// SERVIï¿½O DOMINIO
 builder.Services.AddSingleton(typeof(IServiceBase<>), typeof(ServiceBase<>));
 builder.Services.AddSingleton<IServiceCategory, ServiceCategory>();
 builder.Services.AddSingleton<IServiceExpense, ServiceExpense>();
@@ -77,7 +77,7 @@ builder.Services.AddSingleton<IServiceSystemExpense, ServiceSystemExpense>();
 builder.Services.AddSingleton<IServiceSystemIncome, ServiceSystemIncome>();
 builder.Services.AddSingleton<IServiceUserSystem, ServiceUserSystem>();
 
-// CONFIGURAÇÕES DO JWT
+// CONFIGURAï¿½ï¿½ES DO JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
              .AddJwtBearer(option =>
              {
@@ -119,6 +119,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+var devClient = "http://localhost:4200";
+
+app.UseCors(c =>
+c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins(devClient));
 
 app.UseAuthentication();
 app.UseAuthorization();
