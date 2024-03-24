@@ -18,9 +18,9 @@ namespace Finance.Infra.Data.Repositories.Expenses
             {
                 return await (
                         from s in data.SystemExpenses
-                        join c in data.Categories on s.Id equals c.SystemExpenseId
-                        join us in data.UserSystems on s.Id equals us.SystemExpenseId
-                        join e in data.Expenses on c.Id equals e.CategoryId
+                        join c in data.CategoryExpenses on s.Id equals c.SystemExpenseId
+                        join us in data.UserSystemExpenses on s.Id equals us.SystemExpenseId
+                        join e in data.Expenses on c.Id equals e.CategoryExpenseId
                         where us.UserEmail.Equals(userEmail) && s.Month == e.Month && s.Year == e.Year
                         select e
                         ).AsNoTracking().ToListAsync();
@@ -34,9 +34,9 @@ namespace Finance.Infra.Data.Repositories.Expenses
             {
                 return await (
                     from s in data.SystemExpenses
-                    join c in data.Categories on s.Id equals c.SystemExpenseId
-                    join us in data.UserSystems on s.Id equals us.SystemExpenseId
-                    join e in data.Expenses on c.Id equals e.CategoryId
+                    join c in data.CategoryExpenses on s.Id equals c.SystemExpenseId
+                    join us in data.UserSystemExpenses on s.Id equals us.SystemExpenseId
+                    join e in data.Expenses on c.Id equals e.CategoryExpenseId
                     where us.UserEmail.Equals(userEmail) && e.Month < DateTime.Now.Month && !e.PayedOut
                     select e
                     ).AsNoTracking().ToListAsync();

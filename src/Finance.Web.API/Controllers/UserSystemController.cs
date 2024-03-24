@@ -1,6 +1,9 @@
-﻿using Finance.Domain.Entity.Entities.Users.Systems;
-using Finance.Domain.Interfaces.Repositories.Users.Systems;
-using Finance.Domain.Interfaces.Services.Users.Systems;
+﻿using Finance.Domain.Entity.Entities.Users.Systems.Expenses;
+using Finance.Domain.Entity.Entities.Users.Systems.Incomes;
+using Finance.Domain.Interfaces.Repositories.Users.Systems.Expenses;
+using Finance.Domain.Interfaces.Repositories.Users.Systems.Income;
+using Finance.Domain.Interfaces.Services.Users.Systems.Expense;
+using Finance.Domain.Interfaces.Services.Users.Systems.Incomes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,16 +14,25 @@ namespace Finance.Web.API.Controllers
     [Authorize]
     public class UserSystemController : ControllerBase
     {
-        private readonly IRepositoryUserSystem repositoryUserSystem;
-        private readonly IServiceUserSystem serviceUserSystem;
+        private readonly IRepositoryUserSystemExpense repositoryUserSystemExpense;
+        private readonly IRepositoryUserSystemIncome repositoryUserSystemIncome;
+        private readonly IServiceUserSystemExpense serviceUserSystemExpense;
+        private readonly IServiceUserSystemIncome serviceUserSystemIncome;
         public UserSystemController(
-                IRepositoryUserSystem repositoryUserSystem,
-                IServiceUserSystem serviceUserSystem
+                IRepositoryUserSystemExpense repositoryUserSystemExpense,
+                IServiceUserSystemExpense serviceUserSystemExpense,
+                IRepositoryUserSystemIncome repositoryUserSystemIncome,
+                IServiceUserSystemIncome serviceUserSystemIncome
+
             )
         {
-            this.repositoryUserSystem = repositoryUserSystem;
-            this.serviceUserSystem = serviceUserSystem;
+            this.repositoryUserSystemExpense = repositoryUserSystemExpense;
+            this.serviceUserSystemExpense = serviceUserSystemExpense;
+            this.repositoryUserSystemIncome = repositoryUserSystemIncome;
+            this.serviceUserSystemIncome = serviceUserSystemIncome;
         }
+
+        //Despesas
 
         [Produces("application/json")]
         [HttpPost("/api/RegisterUserOnSystemExpense")]
@@ -28,33 +40,10 @@ namespace Finance.Web.API.Controllers
         {
             try
             {
-                await serviceUserSystem.RegisterUserOnSystemExpense(
-                    new UserSystem
+                await serviceUserSystemExpense.RegisterUserOnSystemExpense(
+                    new UserSystemExpense
                     {
                         SystemExpenseId = userSystemExpenseId,
-                        UserEmail = userEmail,
-                        Administrator = false,
-                        ActualSystemMonth = true
-                    });
-            }
-            catch (Exception)
-            {
-
-                return Task.FromResult(false);
-            }
-            return Task.FromResult(0);
-        }
-
-        [Produces("application/json")]
-        [HttpPost("/api/RegisterUserOnSystemIncome")]
-        public async Task<object> RegisterUserOnSystemIncome(int userSystemIncomeId, string userEmail)
-        {
-            try
-            {
-                await serviceUserSystem.RegisterUserOnSystemIncome(
-                    new UserSystem
-                    {
-                        SystemIncomeId = userSystemIncomeId,
                         UserEmail = userEmail,
                         Administrator = false,
                         ActualSystemMonth = true
@@ -74,8 +63,8 @@ namespace Finance.Web.API.Controllers
         {
             try
             {
-                var userExpenseSystem = await repositoryUserSystem.GetEntityById(id);
-                await repositoryUserSystem.Delete(userExpenseSystem);
+                var userSystemExpense = await repositoryUserSystemExpense.GetEntityById(id);
+                await repositoryUserSystemExpense.Delete(userSystemExpense);
             }
             catch (Exception)
             {
@@ -84,6 +73,40 @@ namespace Finance.Web.API.Controllers
             }
             return Task.FromResult(true);
         }
+
+
+        [Produces("application/json")]
+        [HttpGet("/api/UserSystemExpenseList")]
+        public async Task<object> UserSystemExpenseList(int userExpenseId)
+        {
+            return await repositoryUserSystemExpense.UserSystemExpenseList(userExpenseId);
+        }
+
+
+        //Investimentos
+        [Produces("application/json")]
+        [HttpPost("/api/RegisterUserOnSystemIncome")]
+        public async Task<object> RegisterUserOnSystemIncome(int userSystemIncomeId, string userEmail)
+        {
+            try
+            {
+                await serviceUserSystemIncome.RegisterUserOnSystemIncome(
+                    new UserSystemIncome
+                    {
+                        SystemIncomeId = userSystemIncomeId,
+                        UserEmail = userEmail,
+                        Administrator = false,
+                        ActualSystemMonth = true
+                    });
+            }
+            catch (Exception)
+            {
+
+                return Task.FromResult(false);
+            }
+            return Task.FromResult(0);
+        }
+
 
 
         [Produces("application/json")]
@@ -92,8 +115,8 @@ namespace Finance.Web.API.Controllers
         {
             try
             {
-                var userIncomeSystem = await repositoryUserSystem.GetEntityById(id);
-                await repositoryUserSystem.Delete(userIncomeSystem);
+                var userSystemIncome = await repositoryUserSystemIncome.GetEntityById(id);
+                await repositoryUserSystemIncome.Delete(userSystemIncome);
             }
             catch (Exception)
             {
@@ -103,18 +126,12 @@ namespace Finance.Web.API.Controllers
             return Task.FromResult(true);
         }
 
-        [Produces("application/json")]
-        [HttpGet("/api/UserSystemExpenseList")]
-        public async Task<object> UserSystemExpenseList(int userExpenseId)
-        {
-            return await repositoryUserSystem.UserSystemExpenseList(userExpenseId);
-        }
 
         [Produces("application/json")]
         [HttpGet("/api/UserSystemIncomeList")]
         public async Task<object> UserSystemIncomeList(int userIncomeId)
         {
-            return await repositoryUserSystem.UserSystemIncomeList(userIncomeId);
+            return await repositoryUserSystemIncome.UserSystemIncomeList(userIncomeId);
         }
     }
 }

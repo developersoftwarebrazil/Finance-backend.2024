@@ -22,7 +22,7 @@ namespace Finance.Infra.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Category", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Expenses.CategoryExpense", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,23 +32,40 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("SystemExpenseId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    b.Property<int>("SystemIncomeId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(0);
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SystemExpenseId");
 
+                    b.ToTable("CategoriaDespesa", (string)null);
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Incomes.CategoryIncome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("SystemIncomeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
                     b.HasIndex("SystemIncomeId");
 
-                    b.ToTable("Categoria");
+                    b.ToTable("CategoriaInvestimento", (string)null);
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Expenses.Expense", b =>
@@ -59,13 +76,13 @@ namespace Finance.Infra.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("CategoryExpenseId")
                         .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnName("CategoryExpenseId");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2")
-                        .HasColumnName("DataVencimencimento");
+                        .HasColumnName("DataVencimento");
 
                     b.Property<int>("Month")
                         .HasColumnType("int")
@@ -73,7 +90,8 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("OverdueExpense")
                         .HasColumnType("datetime2")
@@ -82,6 +100,10 @@ namespace Finance.Infra.Data.Migrations
                     b.Property<bool>("PayedOut")
                         .HasColumnType("bit")
                         .HasColumnName("Pago");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DataPagamento");
 
                     b.Property<DateTime>("RegistrationChangeDate")
                         .HasColumnType("datetime2")
@@ -96,22 +118,19 @@ namespace Finance.Infra.Data.Migrations
                         .HasColumnName("TipoTransacao");
 
                     b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18, 2)")
                         .HasColumnName("Valor");
 
                     b.Property<int>("Year")
                         .HasColumnType("int")
                         .HasColumnName("Ano");
 
-                    b.Property<DateTime>("paymentDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataPagamento");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryExpenseId");
 
-                    b.ToTable("Despesa");
+                    b.ToTable("Despesa", (string)null);
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Incomes.Income", b =>
@@ -122,11 +141,10 @@ namespace Finance.Infra.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                    b.Property<int>("CategoryIncomeId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("IncameDate")
+                    b.Property<DateTime>("IncomeDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("DataInvestimento");
 
@@ -136,7 +154,8 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("RegistrationChangeDate")
                         .HasColumnType("datetime2")
@@ -151,7 +170,8 @@ namespace Finance.Infra.Data.Migrations
                         .HasColumnName("TipoTransacao");
 
                     b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18, 2)")
                         .HasColumnName("Valor");
 
                     b.Property<int>("Year")
@@ -160,12 +180,12 @@ namespace Finance.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryIncomeId");
 
-                    b.ToTable("Investimento");
+                    b.ToTable("Investimento", (string)null);
                 });
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Systems.SystemExpenses.SystemExpense", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Systems.Expenses.SystemExpense", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,7 +211,8 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int")
@@ -203,10 +224,10 @@ namespace Finance.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SistemaDespesa");
+                    b.ToTable("SistemaDespesa", (string)null);
                 });
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Systems.SystemIncomes.SystemIncome", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Systems.Incomes.SystemIncome", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,7 +245,8 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int")
@@ -232,7 +254,7 @@ namespace Finance.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SistemaInvestimento");
+                    b.ToTable("SistemaInvestimento", (string)null);
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Identity.ApplicationUser", b =>
@@ -259,10 +281,6 @@ namespace Finance.Infra.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -304,7 +322,7 @@ namespace Finance.Infra.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.UserSystem", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.Expenses.UserSystemExpense", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -324,27 +342,47 @@ namespace Finance.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnOrder(1);
 
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("EmailUsuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SystemExpenseId");
+
+                    b.ToTable("UsuarioDespesaSistema", (string)null);
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.Incomes.UserSystemIncome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("ActualSystemMonth")
+                        .HasColumnType("bit")
+                        .HasColumnName("MesAtual");
+
+                    b.Property<bool>("Administrator")
+                        .HasColumnType("bit")
+                        .HasColumnName("Administrador");
+
                     b.Property<int>("SystemIncomeId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(0);
+                        .HasColumnType("int");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("EmailUsuario");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("NomeUsuario");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SystemExpenseId");
 
                     b.HasIndex("SystemIncomeId");
 
-                    b.ToTable("UsuarioSistema");
+                    b.ToTable("UsuarioInvestimentoSistema", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -484,62 +522,68 @@ namespace Finance.Infra.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Category", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Expenses.CategoryExpense", b =>
                 {
-                    b.HasOne("Finance.Domain.Entity.Entities.Systems.SystemExpenses.SystemExpense", "SystemExpense")
+                    b.HasOne("Finance.Domain.Entity.Entities.Systems.Expenses.SystemExpense", "SystemExpense")
                         .WithMany()
                         .HasForeignKey("SystemExpenseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Finance.Domain.Entity.Entities.Systems.SystemIncomes.SystemIncome", "SystemIncome")
+                    b.Navigation("SystemExpense");
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Categories.Incomes.CategoryIncome", b =>
+                {
+                    b.HasOne("Finance.Domain.Entity.Entities.Systems.Incomes.SystemIncome", "SystemIncome")
                         .WithMany()
                         .HasForeignKey("SystemIncomeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("SystemExpense");
 
                     b.Navigation("SystemIncome");
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Expenses.Expense", b =>
                 {
-                    b.HasOne("Finance.Domain.Entity.Entities.Categories.Category", "Category")
+                    b.HasOne("Finance.Domain.Entity.Entities.Categories.Expenses.CategoryExpense", "CategoryExpense")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("CategoryExpenseId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("CategoryExpense");
                 });
 
             modelBuilder.Entity("Finance.Domain.Entity.Entities.Incomes.Income", b =>
                 {
-                    b.HasOne("Finance.Domain.Entity.Entities.Categories.Category", "Category")
+                    b.HasOne("Finance.Domain.Entity.Entities.Categories.Incomes.CategoryIncome", "CategoryIncome")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("CategoryIncomeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("CategoryIncome");
                 });
 
-            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.UserSystem", b =>
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.Expenses.UserSystemExpense", b =>
                 {
-                    b.HasOne("Finance.Domain.Entity.Entities.Systems.SystemExpenses.SystemExpense", "SystemExpense")
+                    b.HasOne("Finance.Domain.Entity.Entities.Systems.Expenses.SystemExpense", "SystemExpense")
                         .WithMany()
                         .HasForeignKey("SystemExpenseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Finance.Domain.Entity.Entities.Systems.SystemIncomes.SystemIncome", "SystemIncome")
+                    b.Navigation("SystemExpense");
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entity.Entities.Users.Systems.Incomes.UserSystemIncome", b =>
+                {
+                    b.HasOne("Finance.Domain.Entity.Entities.Systems.Incomes.SystemIncome", "SystemIncome")
                         .WithMany()
                         .HasForeignKey("SystemIncomeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("SystemExpense");
 
                     b.Navigation("SystemIncome");
                 });
