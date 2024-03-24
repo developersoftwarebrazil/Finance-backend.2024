@@ -9,6 +9,7 @@ namespace Finance.Domain.Entity.Entities
         public int Id { get; set; }
 
         [Display(Name = "Código")]
+        [MaxLength(250)]
         public string Name { get; set; }
     }
 }

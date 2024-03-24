@@ -38,11 +38,11 @@ namespace Finance.Web.API.Controllers
             if (result.Succeeded)
             {
                 var token = new TokenJWTBuilder()
-                 .AddSecurityKey(JwtSecurityKey.Create("43443FDFDF34DF34343fdf344SDFSDFSDFSDFSDF4545354345SDFGDFGDFGDFGdffgfdGDFGDGR%"))
+                 .AddSecurityKey(JwtSecurityKey.Create("This_is_my_special_Secret_Key-12345678"))
                  .AddSubject("Aplicação para controle financeiro 2024")
-                 .AddIssuer("Code.Security.Bearer")
+                 .AddIssuer("Teste.Security.Bearer")
                  .AddAudience("Teste.Security.Bearer")
-                 .AddClaim("PermissionToUseThisFinanceApplication", "1")
+                 .AddClaim("APIUserFinanceSystem", "1")
                  .AddExpiry(5)
                  .Builder();
 

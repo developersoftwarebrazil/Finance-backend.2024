@@ -1,6 +1,6 @@
-﻿using Finance.Domain.Entity.Entities.Systems.SystemIncomes;
-using Finance.Domain.Interfaces.Repositories.Systems.SystemIncomes;
-using Finance.Domain.Interfaces.Services.Systems.SystemIncomes;
+﻿using Finance.Domain.Entity.Entities.Systems.Incomes;
+using Finance.Domain.Interfaces.Repositories.Systems.Incomes;
+using Finance.Domain.Interfaces.Services.Systems.Incomes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,9 +60,9 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpGet("/api/SystemUserIncomeList")]
-        public async Task<object> SystemUserIncomeList(string emailUser)
+        public async Task<object> SystemUserIncomeList(string userEmail)
         {
-            return await repositorySystemIncome.SystemUserIncomeList(emailUser);
+            return await repositorySystemIncome.SystemUserIncomeList(userEmail);
         }
 
         [Produces("application/json")]

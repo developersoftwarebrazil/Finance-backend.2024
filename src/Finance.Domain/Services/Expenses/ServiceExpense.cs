@@ -36,7 +36,7 @@ namespace Finance.Domain.Services.Expenses
 
             if (expense.PayedOut)
             {
-                expense.paymentDate = date;
+                expense.PaymentDate = date;
             }
 
             var isValidate = expense.PropertyStringValidations(expense.Name, "Name");

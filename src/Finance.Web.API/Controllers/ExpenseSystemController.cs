@@ -1,6 +1,6 @@
-﻿using Finance.Domain.Entity.Entities.Systems.SystemExpenses;
-using Finance.Domain.Interfaces.Repositories.Systems.SystemExpenses;
-using Finance.Domain.Interfaces.Services.Systems.SystemExpenses;
+﻿using Finance.Domain.Entity.Entities.Systems.Expenses;
+using Finance.Domain.Interfaces.Repositories.Systems.Expenses;
+using Finance.Domain.Interfaces.Services.Systems.Expenses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +25,7 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpPost("/api/AddSystemExpense")]
-        public async Task<object> AddSysteExpense(SystemExpense systemExpense)
+        public async Task<object> AddSystemExpense(SystemExpense systemExpense)
         {
             await serviceSystemExpense.AddSystemExpense(systemExpense);
             return systemExpense;
@@ -60,9 +60,9 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpGet("/api/SystemExpenseUserList")]
-        public async Task<object> SystemExpenseUserList(string emailUser)
+        public async Task<object> SystemExpenseUserList(string userEmail)
         {
-            return await repositorySystemExpense.SystemExpenseUserList(emailUser);
+            return await repositorySystemExpense.SystemExpenseUserList(userEmail);
         }
 
         [Produces("application/json")]

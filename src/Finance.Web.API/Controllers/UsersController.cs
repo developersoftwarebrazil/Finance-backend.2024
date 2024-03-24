@@ -30,7 +30,7 @@ namespace Finance.Web.API.Controllers
         public async Task<IActionResult> AddUser([FromBody] Login login)
         {
             if (
-                string.IsNullOrWhiteSpace(login.Name) ||
+
                 string.IsNullOrWhiteSpace(login.Email) ||
                 string.IsNullOrWhiteSpace(login.Password))
 
@@ -40,7 +40,7 @@ namespace Finance.Web.API.Controllers
 
             var user = new ApplicationUser
             {
-                Name = login.Name,
+
                 Email = login.Email,
                 UserName = login.Email
             };
@@ -75,7 +75,7 @@ namespace Finance.Web.API.Controllers
         [HttpPut("/api/UpdateUser/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] Login login)
         {
-            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(login.Name) || string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Password))
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Password))
             {
                 return BadRequest("Faltam alguns dados!");
             }
@@ -88,7 +88,7 @@ namespace Finance.Web.API.Controllers
             }
 
             // Atualiza os dados do usuário
-            user.Name = login.Name; // não pode alterar
+            // user.Name = login.Name; // não pode alterar
 
 
             // Atualiza a senha se fornecida
@@ -145,7 +145,6 @@ namespace Finance.Web.API.Controllers
             var simplefiedUserList = users.Select(us => new
             {
                 UserId = us.Id,
-                Name = us.Name,
                 Email = us.Email,
 
                 //Adicione mais campos caso necessário
