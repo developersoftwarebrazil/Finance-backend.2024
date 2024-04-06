@@ -65,7 +65,7 @@ namespace Finance.Web.API.Controllers
         }
 
         [Produces("application/json")]
-        [HttpPost("/api/GetIncome")]
+        [HttpGet("/api/GetIncome")]
         public async Task<object> GetIncome(int id)
         {
             return await repositoryIncome.GetEntityById(id);

@@ -59,10 +59,10 @@ namespace Finance.Infra.Data.Date.Configurations.Expenses
                 .HasColumnName("TipoTransacao");
 
             // Define a chave estrangeira para a entidade CategoryExpense
-            builder.HasOne(e => e.CategoryExpense)
-                .WithMany()
-                .HasForeignKey(e => e.CategoryExpenseId)
-                .OnDelete(DeleteBehavior.Restrict); // Se você não deseja exclusão em cascata
+            //builder.HasOne(e => e.CategoryExpense)
+            //    .WithMany()
+            //    .HasForeignKey(e => e.CategoryExpenseId)
+            //    .OnDelete(DeleteBehavior.Restrict); // Se você não deseja exclusão em cascata
 
             // Mapeia a chave estrangeira para a coluna CategoryExpenseId
             builder.Property(e => e.CategoryExpenseId)
