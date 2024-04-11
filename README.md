@@ -10,7 +10,7 @@
 - O SDK e as ferramentas mais recentes podem ser baixados em https://dot.net/core.
 Além disso, você pode executar o Projeto Finance 2024 no Visual Studio Code (Windows, Linux ou MacOS).
 
-@ Tecnologias utilizadas:
+# Tecnologias utilizadas:
  - ASP.NET 8.0
  - ASP.NET MVC Core
  - ASP.NET WebApi Core with JWT Bearer Authentication
