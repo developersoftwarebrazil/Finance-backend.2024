@@ -77,9 +77,9 @@ namespace Finance.Web.API.Controllers
 
         [Produces("application/json")]
         [HttpGet("/api/UserSystemExpenseList")]
-        public async Task<object> UserSystemExpenseList(int userExpenseId)
+        public async Task<object> UserSystemExpenseList(int userSystemExpenseId)
         {
-            return await repositoryUserSystemExpense.UserSystemExpenseList(userExpenseId);
+            return await repositoryUserSystemExpense.UserSystemExpenseList(userSystemExpenseId);
         }
 
 

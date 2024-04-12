@@ -35,11 +35,11 @@ namespace Finance.Infra.Data.Date.Configurations.Incomes
             builder.Property(e => e.TransactionTypes)
                 .HasColumnName("TipoTransacao");
 
-            builder.HasOne(e => e.CategoryIncome)
-                .WithMany()
-                .HasForeignKey(e => e.CategoryIncomeId)
-                .HasPrincipalKey(ci => ci.Id)
-                .OnDelete(DeleteBehavior.Restrict); // Se necessário, ajuste essa configuração de acordo com sua lógica de negócios.
+            //builder.HasOne(e => e.CategoryIncome)
+            //    .WithMany()
+            //    .HasForeignKey(e => e.CategoryIncomeId)
+            //    .HasPrincipalKey(ci => ci.Id)
+            //    .OnDelete(DeleteBehavior.Restrict); // Se necessário, ajuste essa configuração de acordo com sua lógica de negócios.
         }
     }
 }

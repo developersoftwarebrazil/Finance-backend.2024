@@ -61,7 +61,7 @@ namespace Finance.Domain.Services.Expenses
                 payiedExpense = payiedExpense,
                 pendingExpense = pendingExpense,
                 previusExpense = previuusExpense,
-                //income = income,
+                
             };
         }
     }

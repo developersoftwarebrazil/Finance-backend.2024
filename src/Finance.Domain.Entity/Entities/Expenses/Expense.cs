@@ -29,7 +29,7 @@ namespace Finance.Domain.Entity.Entities.Expenses
         public TransactionTypeEnum TransactionTypes { get; set; }
 
         public int CategoryExpenseId { get; set; }
-        public virtual CategoryExpense CategoryExpense { get; set; }
+        //public virtual CategoryExpense CategoryExpense { get; set; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace Finance.Domain.Entity.Entities.Incomes
         public TransactionTypeEnum TransactionTypes { get; set; }
 
         public int CategoryIncomeId { get; set; }
-        public virtual CategoryIncome CategoryIncome { get; set; }
+       // public  CategoryIncome CategoryIncome { get; set; }
     }
 }
 
