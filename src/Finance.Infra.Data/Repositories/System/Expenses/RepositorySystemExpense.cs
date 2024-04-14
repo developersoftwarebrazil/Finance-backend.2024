@@ -13,15 +13,20 @@ namespace Finance.Infra.Data.Repositories.System.SystemExpenses
             this.optionosBuilder = new DbContextOptions<FinanceDbContext>();
         }
 
+        //Métop par gerar cópia das despesas 
         public async Task<bool> GenerateSystemExpenseCopy()
         {
             var expenseSystemList = new List<SystemExpense>();
-            try
+
+            try // se tudo estiver ok cai aqui dentro
             {
+
                 using (var data = new FinanceDbContext(optionosBuilder))
                 {
+                    //Gerar lista 
                     expenseSystemList = await data.SystemExpenses.Where(s => s.GenerateExpensesCopy).ToListAsync();
 
+                    // Fazer uma verradura para verifica se há algo para ser copiado.
                     foreach (var expense in expenseSystemList)
                     {
                         var actualDate = DateTime.UtcNow;
@@ -29,6 +34,8 @@ namespace Finance.Infra.Data.Repositories.System.SystemExpenses
                         var month = actualDate.Month;
                         var year = actualDate.Year;
 
+
+                        //faz a consulta no banco
                         var existingExpense = await (
                                                      from e in data.Expenses
                                                      join c in data.CategoryExpenses on e.CategoryExpenseId equals c.Id
@@ -36,15 +43,19 @@ namespace Finance.Infra.Data.Repositories.System.SystemExpenses
                                                      select e.Id
                                                      ).AnyAsync();
 
+                        //Verifica se já existe o item a ser copiado .
 
-                        if (!existingExpense)
+                        if (!existingExpense)// se não existir ai ele cria
                         {
+                            // Lista todas as despesas para serem copiadas
                             var systemExpenses = await (
                                                         from e in data.Expenses
                                                         join c in data.CategoryExpenses on e.CategoryExpenseId equals c.Id
                                                         where c.SystemExpenseId == expense.Id && e.Month == expense.Month && e.Year == expense.YearCopy
                                                         select e
                                                        ).ToListAsync();
+
+                            //Faz a cópia da despesa 
                             systemExpenses.ForEach(e =>
                             {
                                 e.Id = 0;
@@ -56,7 +67,7 @@ namespace Finance.Infra.Data.Repositories.System.SystemExpenses
                                 e.PayedOut = false;
                             });
 
-                            if (systemExpenses.Any())
+                            if (systemExpenses.Any())// Se já existe 
                             {
                                 data.Expenses.AddRange(systemExpenses);
                                 await data.SaveChangesAsync();
@@ -66,7 +77,7 @@ namespace Finance.Infra.Data.Repositories.System.SystemExpenses
 
                 }
             }
-            catch (Exception)
+            catch (Exception) // Se houver algum erro casi aqui dentro
             {
 
                 return false;

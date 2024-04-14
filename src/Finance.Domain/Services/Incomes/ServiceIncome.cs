@@ -39,7 +39,7 @@ namespace Finance.Domain.Services.Incomes
                 await repositoryIncome.Update(income);
             }
         }
-        public async Task<object> LoadGraph(string userEmail)
+        public async Task<object> LoadIncomeGraph(string userEmail)
         {
             var userIncome = await repositoryIncome.IncomeUserList(userEmail);
 

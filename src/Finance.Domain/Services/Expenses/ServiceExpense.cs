@@ -45,15 +45,17 @@ namespace Finance.Domain.Services.Expenses
                 await repositoryExpense.Update(expense);
             }
         }
-        public async Task<object> LoadGraph(string userEmail)
+        public async Task<object> LoadExpenseGraph(string userEmail)
         {
             var userExpense = await repositoryExpense.ExpenseUserList(userEmail);
             var previuusExpense = await repositoryExpense.UnPaidExpensesPreviusMonthUserList(userEmail);
+           
 
             var unPaiedExpenses_previousMonth = previuusExpense.Any() ? previuusExpense.ToList().Sum(ex => ex.Value) : 0;
             var payiedExpense = userExpense.Where(pe => pe.PayedOut && pe.TransactionTypes == TransactionTypeEnum.expense).Sum(pe => pe.Value);
             var pendingExpense = userExpense.Where(pne => !pne.PayedOut && pne.TransactionTypes == TransactionTypeEnum.expense).Sum(pne => pne.Value);
-            //var income = userExpense.Where(i => i.TransactionTypes == TransactionTypeEnum.income).Sum(i => i.Value);
+            // var income = userExpense.Where(i => i.TransactionTypes == TransactionTypeEnum.income).Sum(i => i.Value);
+
 
             return new
             {

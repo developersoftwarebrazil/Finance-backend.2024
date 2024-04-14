@@ -71,12 +71,12 @@ namespace Finance.Web.API.Controllers
             return await repositoryIncome.GetEntityById(id);
         }
 
-        //[Produces("application/json")]
-        //[HttpGet("/api/LoadGraph")]
-        //public async Task<object> LoadGraph(string userEmail)
-        //{
-        //    return await serviceIncome.LoadGraph(userEmail);
-        //}
+        [Produces("application/json")]
+        [HttpGet("/api/LoadIncomeGraph")]
+        public async Task<object> LoadIncomeGraph(string userEmail)
+        {
+            return await serviceIncome.LoadIncomeGraph(userEmail);
+        }
 
     }
 }

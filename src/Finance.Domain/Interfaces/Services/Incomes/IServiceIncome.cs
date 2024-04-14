@@ -6,6 +6,6 @@ namespace Finance.Domain.Interfaces.Services.Incomes
     {
         Task AddIncome(Income income);
         Task UpdateIncome(Income income);
-        Task<object> LoadGraph(string userEmail);
+        Task<object> LoadIncomeGraph(string userEmail);
     }
 }
