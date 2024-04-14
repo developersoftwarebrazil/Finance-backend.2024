@@ -72,10 +72,10 @@ namespace Finance.Web.API.Controllers
         }
 
         [Produces("application/json")]
-        [HttpGet("/api/LoadGraph")]
-        public async Task<object> LoadGraph(string userEmail)
+        [HttpGet("/api/LoadExpenseGraph")]
+        public async Task<object> LoadExpenseGraph(string userEmail)
         {
-            return await serviceExpense.LoadGraph(userEmail);
+            return await serviceExpense.LoadExpenseGraph(userEmail);
         }
 
     }
